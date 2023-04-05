@@ -1,0 +1,238 @@
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --main-colour: #ff3300;
+    --background-colour: #FFF;
+    --fore-colour: #222;
+    --half-transparent: #0000007C;
+
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: Consolas;
+
+    min-height: 100vh;
+
+    margin: 0;
+
+    color: var(--fore-colour);
+    background-color: var(--background-colour);
+}
+
+input,
+button {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+p,
+h1,
+h2,
+h3 {
+    margin: 0;
+}
+
+header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    place-content: center;
+    place-items: center;
+    gap: 5rem;
+
+    padding: 2rem;
+
+    background-color: lightgray;
+}
+
+header nav {
+    place-self: center start;
+}
+
+header nav button {
+    padding: 1rem;
+
+    background-color: transparent;
+
+    border: none;
+    border-radius: 100rem;
+}
+
+header nav button[selected] {
+    background-color: darkgray;
+}
+
+header nav a {
+    text-decoration: none;
+    font-size: larger;
+
+    color: inherit;
+}
+
+header aside {
+    display: flex;
+    flex-direction: row;
+    place-content: center;
+    place-items: center;
+
+    gap: 2rem;
+}
+
+header aside button {
+    width: 3rem;
+    aspect-ratio: 1;
+
+    background-color: transparent;
+    background-position: center;
+    background-size: 60%;
+    background-repeat: no-repeat;
+
+    border: none;
+    border-radius: 100%;
+
+    padding: 2rem;
+}
+
+header aside #user-container {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    gap: 0.5rem;
+}
+
+header aside #search-button {
+    background-image: url("/images/search.svg");
+}
+
+header aside #user-button {
+    position: relative;
+
+    background-color: var(--main-colour);
+}
+
+header aside #user-button::before {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    aspect-ratio: 1;
+
+    background-image: url("/images/user.svg");
+    background-size: 90%;
+    background-position: inherit;
+    background-position-y: 200%;
+    background-repeat: inherit;
+
+    filter: invert();
+}
+
+header aside #user-button::after {
+    content: attr(notification-number);
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(30%, -30%);
+
+    width: 2rem;
+    aspect-ratio: 1;
+
+    display: flex;
+    place-content: center;
+    place-items: center;
+
+    color: var(--background-colour);
+    background-color: orange;
+
+    border-radius: 100%;
+}
+
+header aside #user-dropdown-button {
+    width: 2rem;
+
+    background-image: url("/images/dropdown.svg");
+
+    padding: 0.5rem;
+}
+
+header aside #navbar-button {
+    background-image: url("/images/hamburger_button.svg");
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    place-content: center;
+    place-items: center;
+
+    padding: 0 5rem;
+}
+
+main section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+main section :is(h1, h2) {
+    color: var(--main-colour);
+}
+
+main section button {
+    font-weight: bold;
+
+    width: 100%;
+
+    padding: 2rem;
+
+    color: var(--background-colour);
+    background-color: var(--main-colour);
+
+    border: none;
+    border-radius: 100rem;
+
+    box-shadow: 0.8rem 0.8rem 0.2rem var(--half-transparent);
+}
+
+main figure {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-content: center;
+    place-items: center;
+}
+
+main figure embed {
+    grid-column: 1;
+    grid-row: 1;
+
+    width: calc(100vmin - 8rem);
+    aspect-ratio: 1;
+}
+
+@media (width < 720px) {
+    main {
+        display: flex;
+        flex-direction: column-reverse;
+        place-content: center;
+        place-items: center;
+
+        padding-bottom: 5rem;
+    }
+
+    main section {
+        place-content: center;
+        place-items: center;
+
+        width: 50%;
+    }
+}
